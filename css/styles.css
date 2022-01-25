@@ -1,0 +1,26 @@
+body{
+  align-items: center;
+}
+
+.jumbotron{
+  background-color: skyblue;
+  text-align: center;
+  border: solid black 5px;
+  border-radius: 10px;
+}
+.initial, .additional{
+  float:left;
+  margin: 10px;
+  padding: 10px;
+  width: 48%;
+  background-color: skyblue;
+  text-align: center;
+  border: solid black 5px;
+  border-radius: 10px;
+}
+
+button{
+  background-color: black;
+  color: white;
+  width: 50%;
+}

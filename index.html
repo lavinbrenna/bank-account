@@ -8,6 +8,40 @@
   <title>Bank Account</title>
 </head>
 <body>
-
+<div class="container">
+  <div class="jumbotron">
+    <h2>Start a bank account</h2>
+  </div>
+  <div class="initial">
+    <div class="col-med-2">
+      <form id="initialBalanceForm">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name">
+        </div>
+        <div class="form-group">
+          <label for="initial-balance">Initial Balance</label>
+          <input type="text" class="form-control" id="initial-balance"> 
+        </div>
+        <button type="submit" class="initialBalance">Submit</button>
+      </form>
+    </div>
+  </div>
+  <div class ="additional">
+    <div class="col-med-2">
+      <form id="depositWithdrawForm">
+        <div class="form-group">
+          <label for="deposit-amount">Deposit Amount</label>
+          <input type="text"class="form-control" id="deposit-amount">
+        </div>
+        <div class="form-group">
+          <label for="withdrawal-amount">Withdrawal Amount</label>
+          <input type="text" class="form-control" id="withdrawal-amount">
+        </div>
+        <button type="submit" class="depositWithdraw">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
 </body>
 </html>

@@ -7,17 +7,21 @@ function BankAccount(){
 
 //Assign account id
 BankAccount.prototype.assignId = function(account){
-
+  this.currentId += 1;
+  return this.currentId;
 }
 //add account
-BankAccount.prototype.addAccount = function(id){
-  
+BankAccount.prototype.addAccount = function(account){
+account.id = this.assignId();
+this.accounts[account.id]= account;
+
 }
 //check account balance
 BankAccount.prototype.checkBalance = function(id){
-  if (this.account.id != undefined){
-    return this.account.amount;
+  if (this.accounts[id] != undefined){
+    return this.accounts[id];
   }
+  return false;
 }
 
 //Business Logic for Account
@@ -30,12 +34,14 @@ function Account(name, amount){
 //deposit amount
 Account.prototype.deposit = function(amount){
   this.amount += amount;
-  return amount;
+  console.log(this.amount);
+  return this.amount;
 }
 //withdraw amount
 Account.prototype.withdraw = function(amount){
   this.amount -= amount;
-  return amount;
+  console.log(this.amount);
+  return this.amount;
 }
 
 //UI logic
