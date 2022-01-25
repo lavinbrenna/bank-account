@@ -31,45 +31,55 @@ function Account(name, amount){
   this.amount = amount;
 }
 
-//deposit amount
-Account.prototype.deposit = function(amount){
-  this.amount += amount;
-  console.log(this.amount);
-  return this.amount;
-}
-//withdraw amount
-Account.prototype.withdraw = function(amount){
-  this.amount -= amount;
-  console.log(this.amount);
-  return this.amount;
-}
 
 //UI logic
 
+function withdrawAmount(account, amount){
+  let newAmount = account.amount;
+  if(amount != "" ){
+    newAmount = parseInt(newAmount) - parseInt(amount);
+    console.log(newAmount);
+    console.log("withdraw");
+    account.amount = newAmount.toString();
+    return account.amount;
+
+  }
+  else{
+    return account.amount;
+  }
+}
+function depositAmount(account, amount){
+  let newAmount = account.amount;
+  if(amount!= ""){
+    newAmount = parseInt(newAmount) + parseInt(amount);
+    console.log(newAmount);
+    console.log("deposit");
+    account.amount = newAmount.toString();
+    return account.amount;
+  }
+  else{
+    return account.amount;
+  }
+}
 $(document).ready(function(){
   $("form#initialBalanceForm").submit(function(event){
     event.preventDefault();
     const name = $("input#name").val();
-    const initialBalance = parseInt($("input#initial-balance").val());
+    const initialBalance = $("input#initial-balance").val();
     console.log(initialBalance);
-    const withdraw = parseInt($("input#withdrawal-amount").val());
-      const deposit = parseInt($("input#deposit-amount").val());
+    const withdraw = $("input#withdrawal-amount").val();
+      const deposit = $("input#deposit-amount").val();
     let newBankAccount = new BankAccount();
     let account = new Account(name, initialBalance);
     newBankAccount.addAccount(account);
-    console.log(newBankAccount);
-    console.log(account);
-    if(withdraw != NaN){
-      account.withdraw();
+    if(withdraw != ""){
+      withdrawAmount(account, withdraw);
+    }
+    else if(deposit != ""){
+      depositAmount(account, deposit);
+    }
+    else{
       newBankAccount.checkBalance(account.id);
-      console.log("withdraw");
-    }else if(deposit != NaN){
-      account.deposit();
-      newBankAccount.checkBalance(account.id);
-      console.log("deposit");
-    }else{
-      newBankAccount.checkBalance(account.id);
-      console.log("initial funds");
     }
     });
 })
