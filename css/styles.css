@@ -18,11 +18,23 @@ body{
   border: solid black 5px;
   border-radius: 10px;
 }
+.showBalance{
+  background-color: skyblue;
+  display: none;
+  margin: auto;
+  margin-top: 10px;
+  width: 50%;
+}
+.balance p{
+  font-size: 24pt;
+}
 
 button{
   background-color: black;
   color: white;
+  border: skyblue 3px solid;
+  border-radius: 5%;
   width: 50%;
-  margin-left: 275px;
-  margin-right: 100px;
+  display: block;
+  margin: auto;
 }

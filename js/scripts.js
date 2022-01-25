@@ -40,7 +40,7 @@ function withdrawAmount(account, amount){
     newAmount = parseInt(newAmount) - parseInt(amount);
     console.log(newAmount);
     console.log("withdraw");
-    account.amount = newAmount.toString();
+    account.amount = newAmount;
     return account.amount;
 
   }
@@ -54,7 +54,7 @@ function depositAmount(account, amount){
     newAmount = parseInt(newAmount) + parseInt(amount);
     console.log(newAmount);
     console.log("deposit");
-    account.amount = newAmount.toString();
+    account.amount = newAmount;
     return account.amount;
   }
   else{
@@ -66,20 +66,31 @@ $(document).ready(function(){
     event.preventDefault();
     const name = $("input#name").val();
     const initialBalance = $("input#initial-balance").val();
-    console.log(initialBalance);
     const withdraw = $("input#withdrawal-amount").val();
-      const deposit = $("input#deposit-amount").val();
+    const deposit = $("input#deposit-amount").val();
+
     let newBankAccount = new BankAccount();
     let account = new Account(name, initialBalance);
     newBankAccount.addAccount(account);
+
     if(withdraw != ""){
+      $(".showBalance").show();
       withdrawAmount(account, withdraw);
+      console.log(account.amount);
+      $(".balance").html("$" + account.amount);
     }
     else if(deposit != ""){
+      $(".showBalance").show();
       depositAmount(account, deposit);
+      console.log(account.amount);
+      $(".balance").html("$" + account.amount);
     }
     else{
+      $(".showBalance").show();
       newBankAccount.checkBalance(account.id);
+      console.log(account.amount);
+      $(".balance").html("$" + account.amount);
     }
+
     });
 })
