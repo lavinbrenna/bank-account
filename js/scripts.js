@@ -45,3 +45,31 @@ Account.prototype.withdraw = function(amount){
 }
 
 //UI logic
+
+$(document).ready(function(){
+  $("form#initialBalanceForm").submit(function(event){
+    event.preventDefault();
+    const name = $("input#name").val();
+    const initialBalance = parseInt($("input#initial-balance").val());
+    console.log(initialBalance);
+    const withdraw = parseInt($("input#withdrawal-amount").val());
+      const deposit = parseInt($("input#deposit-amount").val());
+    let newBankAccount = new BankAccount();
+    let account = new Account(name, initialBalance);
+    newBankAccount.addAccount(account);
+    console.log(newBankAccount);
+    console.log(account);
+    if(withdraw != NaN){
+      account.withdraw();
+      newBankAccount.checkBalance(account.id);
+      console.log("withdraw");
+    }else if(deposit != NaN){
+      account.deposit();
+      newBankAccount.checkBalance(account.id);
+      console.log("deposit");
+    }else{
+      newBankAccount.checkBalance(account.id);
+      console.log("initial funds");
+    }
+    });
+})
